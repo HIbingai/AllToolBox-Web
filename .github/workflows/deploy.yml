@@ -44,7 +44,7 @@ jobs:
         id: check_pages
         run: |
           status=$(curl -s -o /dev/null -w "%{http_code}" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/pages || true)
-          if [ "$status" = "200" ]; then echo "enabled=true" >> $GITHUB_OUTPUT; else echo "enabled=false" >> $GITHUB_OUTPUT; fi
+          if [ "$status" = "200" ]; then echo "PAGES_ENABLED=true" >> $GITHUB_ENV; else echo "PAGES_ENABLED=false" >> $GITHUB_ENV; fi
       - name: Deploy to Pages
-        if: ${{ steps.check_pages.outputs.enabled == 'true' }}
+        if: ${{ env.PAGES_ENABLED == 'true' }}
         uses: actions/deploy-pages@v1
