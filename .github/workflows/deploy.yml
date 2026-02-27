@@ -32,7 +32,7 @@ jobs:
       - name: Upload pages artifact
         # Use the latest upload-pages-artifact (v1 or v2). If your runner errors about upload-artifact v3,
         # we'll see that in logs and then fallback to gh-pages approach.
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v2
         with:
           path: ./dist
 
