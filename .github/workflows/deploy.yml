@@ -45,6 +45,11 @@ jobs:
         run: |
           status=$(curl -s -o /dev/null -w "%{http_code}" -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/pages || true)
           if [ "$status" = "200" ]; then echo "PAGES_ENABLED=true" >> $GITHUB_ENV; else echo "PAGES_ENABLED=false" >> $GITHUB_ENV; fi
+      - name: Wait for artifact propagation
+        if: ${{ env.PAGES_ENABLED == 'true' }}
+        run: |
+          echo "Waiting 20s for artifact propagation"
+          sleep 20
       - name: Deploy to Pages
         if: ${{ env.PAGES_ENABLED == 'true' }}
         uses: actions/deploy-pages@v1
