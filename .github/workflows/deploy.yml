@@ -48,3 +48,4 @@ jobs:
       - name: Deploy to Pages
         if: ${{ env.PAGES_ENABLED == 'true' }}
         uses: actions/deploy-pages@v1
+        continue-on-error: true
