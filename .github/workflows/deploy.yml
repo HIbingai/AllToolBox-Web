@@ -1,4 +1,4 @@
-name: Build and Deploy to GitHub Pages (gh-pages)
+name: Build and Deploy to GitHub Pages (official)
 
 on:
   push:
@@ -6,14 +6,19 @@ on:
       - main
   workflow_dispatch: {}
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js 18
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
@@ -21,13 +26,19 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build (production)
+      - name: Build
         run: npm run build
 
-      - name: Deploy to gh-pages branch
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Upload pages artifact
+        # Use the latest upload-pages-artifact (v1 or v2). If your runner errors about upload-artifact v3,
+        # we'll see that in logs and then fallback to gh-pages approach.
+        uses: actions/upload-pages-artifact@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          publish_branch: gh-pages
-          enable_jekyll: false
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to Pages
+        uses: actions/deploy-pages@v1
