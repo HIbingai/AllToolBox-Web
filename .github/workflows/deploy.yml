@@ -29,11 +29,16 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Prepare artifact for upload
+        run: |
+          echo "Preparing artifact by dereferencing any symlinks"
+          mkdir -p artifact
+          cp -rL ./dist/. ./artifact/
       - name: Upload pages artifact
         uses: actions/upload-artifact@v4
         with:
           name: github-pages
-          path: ./dist
+          path: ./artifact
 
   deploy:
     needs: build
