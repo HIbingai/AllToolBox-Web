@@ -44,11 +44,15 @@ jobs:
           find artifact -type l -ls || true
           echo "Files with multiple hard links (if any):"
           find artifact -type f -links +1 -ls || true
+      - name: Package artifact as tar
+        run: |
+          echo "Creating tar archive for deployment"
+          tar -C artifact -cf github-pages.tar .
       - name: Upload pages artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
-          path: ./artifact
           name: github-pages
+          path: github-pages.tar
       - name: Ensure Pages source set to gh-pages
         if: ${{ github.repository == 'HIbingai/Hibingai.github.io' && github.ref == 'refs/heads/main' }}
         run: |
