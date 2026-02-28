@@ -78,6 +78,7 @@ jobs:
           sleep 20
       - name: Deploy to Pages
         if: ${{ env.PAGES_ENABLED == 'true' }}
+        continue-on-error: true
         uses: actions/deploy-pages@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
