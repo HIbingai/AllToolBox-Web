@@ -7,7 +7,7 @@ on:
   workflow_dispatch: {}
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -30,10 +30,9 @@ jobs:
         run: npm run build
 
       - name: Upload pages artifact
-        # Use the latest upload-pages-artifact (v1 or v2). If your runner errors about upload-artifact v3,
-        # we'll see that in logs and then fallback to gh-pages approach.
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v3
         with:
+          name: dist
           path: ./dist
 
   deploy:
@@ -50,6 +49,15 @@ jobs:
         run: |
           echo "Waiting 20s for artifact propagation"
           sleep 20
+      - name: Download artifact
+        if: ${{ env.PAGES_ENABLED == 'true' }}
+        uses: actions/download-artifact@v3
+        with:
+          name: dist
+          path: ./dist
       - name: Deploy to Pages
         if: ${{ env.PAGES_ENABLED == 'true' }}
-        uses: actions/deploy-pages@v1
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
