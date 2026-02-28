@@ -3,6 +3,9 @@ import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline, Container, AppBar, Toolbar, Typography, Box, Grid, Paper, IconButton, Dialog, DialogTitle, DialogContent, DialogActions, Button, useMediaQuery } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
+import SpeedIcon from '@mui/icons-material/Speed';
+import SecurityIcon from '@mui/icons-material/Security';
+import DevicesIcon from '@mui/icons-material/Devices';
 import getTheme from './theme';
 import PlatformSelector from './components/PlatformSelector';
 import DownloadCard from './components/DownloadCard';
@@ -125,44 +128,101 @@ export default function App() {
         </Toolbar>
       </AppBar>
 
-      <Container sx={{ py: 4 }}>
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={7}>
-            <Paper elevation={1} sx={{ p: 3 }}>
-              <Typography variant="h5">轻量、可靠的系统工具箱</Typography>
-              <Typography color="text.secondary" sx={{ mt: 1 }}>
-                Android 原生设计风格界面（Material You / Material 3 灵感），默认检测并选中 Windows x86，支持多平台/多架构/版本。
-              </Typography>
+      <Container maxWidth="lg" sx={{ py: 6 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 4, flexDirection: { xs: 'column', md: 'row' } }}>
+          <Box sx={{ flex: 1 }}>
+            <Typography variant="h2" component="h1" sx={{ fontWeight: 800, mb: 2 }}>AllToolBox — 轻量可靠的系统工具箱</Typography>
+            <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>跨平台、多架构、开箱即用的系统维护工具，注重性能与安全。</Typography>
 
-              <Box sx={{ mt: 3 }}>
-                <PlatformSelector
-                  platforms={platforms}
-                  value={{
-                    platform: options.platform || '',
-                    arch: options.arch || '',
-                    version: options.version || '',
-                    archs: options.archs || [],
-                    versions: options.options?.versions || options.versions || []
-                  }}
-                  onChange={(v) => setOptions(prev => ({ ...prev, ...v }))}
-                />
-              </Box>
+            <Box sx={{ display: 'flex', gap: 2 }}>
+              <Button variant="contained" color="primary" size="large" href="#download">立即下载</Button>
+              <Button variant="outlined" color="inherit" size="large" href="#docs">阅读文档</Button>
+            </Box>
 
-              <Box sx={{ mt: 3 }} id="download">
-                <DownloadCard item={currentItem} onOpenNotes={() => { setModalContent(currentItem?.notes_long || currentItem?.notes_short || '无说明'); setModalOpen(true); }} />
-              </Box>
+            <Box sx={{ mt: 4, display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+              <Paper elevation={0} sx={{ p: 2, minWidth: 140, display: 'flex', flexDirection: 'column', gap: 1 }}>
+                <Typography variant="h6">小巧</Typography>
+                <Typography variant="body2" color="text.secondary">体积小，启动快</Typography>
+              </Paper>
+              <Paper elevation={0} sx={{ p: 2, minWidth: 140, display: 'flex', flexDirection: 'column', gap: 1 }}>
+                <Typography variant="h6">安全</Typography>
+                <Typography variant="body2" color="text.secondary">签名与校验支持</Typography>
+              </Paper>
+              <Paper elevation={0} sx={{ p: 2, minWidth: 140, display: 'flex', flexDirection: 'column', gap: 1 }}>
+                <Typography variant="h6">跨平台</Typography>
+                <Typography variant="body2" color="text.secondary">支持 Windows、macOS、Linux</Typography>
+              </Paper>
+            </Box>
+          </Box>
+
+          <Box sx={{ width: 420, display: 'flex', justifyContent: 'center' }}>
+            <Paper elevation={3} sx={{ width: '100%', height: 260, borderRadius: 3, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Typography color="text.secondary">屏幕预览</Typography>
+            </Paper>
+          </Box>
+        </Box>
+
+        <Grid container spacing={4} sx={{ mt: 6 }}>
+          <Grid item xs={12} md={4}>
+            <Paper elevation={1} sx={{ p: 3, textAlign: 'center' }}>
+              <SpeedIcon sx={{ fontSize: 40, color: 'primary.main' }} />
+              <Typography variant="h6" sx={{ mt: 1 }}>快速</Typography>
+              <Typography variant="body2" color="text.secondary">高性能构建与运行时优化。</Typography>
             </Paper>
           </Grid>
-
-          <Grid item xs={12} md={5}>
-            <Paper elevation={0} sx={{ p: 2 }}>
-              <Typography variant="subtitle1">更新日志</Typography>
-              <Box sx={{ mt: 2 }}>
-                <Changelog entries={changelogEntries} />
-              </Box>
+          <Grid item xs={12} md={4}>
+            <Paper elevation={1} sx={{ p: 3, textAlign: 'center' }}>
+              <SecurityIcon sx={{ fontSize: 40, color: 'primary.main' }} />
+              <Typography variant="h6" sx={{ mt: 1 }}>安全</Typography>
+              <Typography variant="body2" color="text.secondary">内置校验与安全更新流程。</Typography>
+            </Paper>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Paper elevation={1} sx={{ p: 3, textAlign: 'center' }}>
+              <DevicesIcon sx={{ fontSize: 40, color: 'primary.main' }} />
+              <Typography variant="h6" sx={{ mt: 1 }}>兼容</Typography>
+              <Typography variant="body2" color="text.secondary">支持多平台与 ARM 架构。</Typography>
             </Paper>
           </Grid>
         </Grid>
+
+        <Box sx={{ mt: 6 }} id="download">
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={7}>
+              <Paper elevation={1} sx={{ p: 3 }}>
+                <Typography variant="h5">下载</Typography>
+                <Typography color="text.secondary" sx={{ mt: 1 }}>选择平台、架构与版本后下载。</Typography>
+
+                <Box sx={{ mt: 3 }}>
+                  <PlatformSelector
+                    platforms={platforms}
+                    value={{
+                      platform: options.platform || '',
+                      arch: options.arch || '',
+                      version: options.version || '',
+                      archs: options.archs || [],
+                      versions: options.options?.versions || options.versions || []
+                    }}
+                    onChange={(v) => setOptions(prev => ({ ...prev, ...v }))}
+                  />
+                </Box>
+
+                <Box sx={{ mt: 3 }}>
+                  <DownloadCard item={currentItem} onOpenNotes={() => { setModalContent(currentItem?.notes_long || currentItem?.notes_short || '无说明'); setModalOpen(true); }} />
+                </Box>
+              </Paper>
+            </Grid>
+
+            <Grid item xs={12} md={5}>
+              <Paper elevation={0} sx={{ p: 2 }}>
+                <Typography variant="subtitle1">更新日志</Typography>
+                <Box sx={{ mt: 2 }}>
+                  <Changelog entries={changelogEntries} />
+                </Box>
+              </Paper>
+            </Grid>
+          </Grid>
+        </Box>
       </Container>
 
       <Box component="footer" sx={{ py: 3, textAlign: 'center' }}>
