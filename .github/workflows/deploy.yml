@@ -7,7 +7,7 @@ on:
   workflow_dispatch: {}
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -48,6 +48,14 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           path: ./artifact
+      - name: Deploy to gh-pages (peaceiris)
+        if: ${{ github.repository == 'HIbingai/Hibingai.github.io' && github.ref == 'refs/heads/main' }}
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./artifact
+          publish_branch: gh-pages
+          force_orphan: true
 
   deploy:
     needs: build
