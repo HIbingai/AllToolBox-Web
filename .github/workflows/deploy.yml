@@ -45,9 +45,8 @@ jobs:
           echo "Files with multiple hard links (if any):"
           find artifact -type f -links +1 -ls || true
       - name: Upload pages artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-pages-artifact@v1
         with:
-          name: github-pages
           path: ./artifact
 
   deploy:
