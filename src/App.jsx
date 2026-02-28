@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { ThemeProvider } from '@mui/material/styles';
-import { CssBaseline, Container, AppBar, Toolbar, Typography, Box, Grid, Paper, IconButton, Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@mui/material';
+import { CssBaseline, Container, AppBar, Toolbar, Typography, Box, Grid, Paper, IconButton, Dialog, DialogTitle, DialogContent, DialogActions, Button, useMediaQuery } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import theme from './theme';
+import getTheme from './theme';
 import PlatformSelector from './components/PlatformSelector';
 import DownloadCard from './components/DownloadCard';
 import Changelog from './components/Changelog';
@@ -24,6 +24,9 @@ function detectClient() {
 }
 
 export default function App() {
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  const theme = getTheme(prefersDarkMode);
+
   const [releases, setReleases] = useState({});
   const [options, setOptions] = useState({
     platform: null,
