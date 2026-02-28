@@ -7,7 +7,7 @@ on:
   workflow_dispatch: {}
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -32,7 +32,7 @@ jobs:
       - name: Upload pages artifact
         uses: actions/upload-artifact@v4
         with:
-          name: dist
+          name: github-pages
           path: ./dist
 
   deploy:
@@ -49,18 +49,11 @@ jobs:
         run: |
           echo "Waiting 20s for artifact propagation"
           sleep 20
-      - name: Download artifact
-        if: ${{ env.PAGES_ENABLED == 'true' }}
-        uses: actions/download-artifact@v4
-        with:
-          name: dist
-          path: ./dist
       - name: Deploy to Pages
         if: ${{ env.PAGES_ENABLED == 'true' }}
-        uses: peaceiris/actions-gh-pages@v4
+        uses: actions/deploy-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Ensure Pages source set to gh-pages
         if: ${{ env.PAGES_ENABLED == 'true' }}
         run: |
