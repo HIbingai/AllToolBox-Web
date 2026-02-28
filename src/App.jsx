@@ -112,7 +112,7 @@ export default function App() {
       <AppBar position="sticky" color="transparent" elevation={0} sx={{ backdropFilter: 'blur(8px) saturate(120%)', WebkitBackdropFilter: 'blur(8px) saturate(120%)' }}>
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 2 }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <Typography variant="h6" sx={{ fontWeight: 700, letterSpacing: 0, mr: 1 }}>工具箱</Typography>
+            <Typography variant="h6" sx={{ fontWeight: 700, letterSpacing: 0, mr: 1 }}>AllToolBox工具箱</Typography>
           </Box>
 
           <Box component="nav" sx={{ display: 'flex', gap: 3, alignItems: 'center', justifyContent: 'center', flexGrow: 1 }}>
@@ -225,7 +225,7 @@ export default function App() {
       </Container>
 
       <Box component="footer" sx={{ py: 3, textAlign: 'center' }}>
-        <Typography variant="caption" color="text.secondary">© 工具箱 团队</Typography>
+        <Typography variant="caption" color="text.secondary">© AllToolBox 团队</Typography>
         <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 1 }}>
           AllToolBox 开源地址: <a href="https://github.com/AllToolBox-SC/AllToolBox" target="_blank" rel="noopener noreferrer">https://github.com/AllToolBox-SC/AllToolBox</a>
         </Typography>

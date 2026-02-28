@@ -105,7 +105,7 @@ export default function App() {
       <AppBar position="sticky" color="default" elevation={2}>
         <Toolbar>
           <IconButton edge="start" color="inherit"><MenuIcon /></IconButton>
-          <Typography variant="h6" sx={{ flexGrow: 1 }}>工具箱</Typography>
+          <Typography variant="h6" sx={{ flexGrow: 1 }}>AllToolBox工具箱</Typography>
           <Button color="inherit" href="#download">下载</Button>
         </Toolbar>
       </AppBar>
@@ -151,7 +151,7 @@ export default function App() {
       </Container>
 
       <Box component="footer" sx={{ py: 3, textAlign: 'center' }}>
-        <Typography variant="caption" color="text.secondary">© 工具箱 团队</Typography>
+        <Typography variant="caption" color="text.secondary">© AllToolBox 团队</Typography>
       </Box>
 
       <Dialog open={modalOpen} onClose={() => setModalOpen(false)} fullWidth maxWidth="md">

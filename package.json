@@ -2,7 +2,7 @@
   "name": "toolbox-web-react-material3",  
   "version": "1.0.0",  
   "private": true,  
-  "description": "工具箱 — React + Material3 风格下载页面模板（Webpack + GitHub Actions 部署）",  
+  "description": "AllToolBox工具箱 — React + Material3 风格下载页面模板（Webpack + GitHub Actions 部署）",  
   "scripts": {  
     "start": "webpack serve --mode development --open",  
     "build": "webpack --mode production",  
