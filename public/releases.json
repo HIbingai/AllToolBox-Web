@@ -1,20 +1,15 @@
-[  
-  {  
-    "version": "1.0.0",  
-    "date": "2026-02-27",  
-    "description": "Initial release of the AllToolBox-Web project.",  
-    "changes": [  
-      "Feature A implemented.",  
-      "Bug fixes and improvements."  
-    ]  
-  },  
-  {  
-    "version": "1.1.0",  
-    "date": "2026-03-15",  
-    "description": "Minor update with new features.",  
-    "changes": [  
-      "Feature B implemented.",  
-      "Performance improvements."  
-    ]  
-  }  
-]
+{
+  "windows": {
+    "x86": {
+      "1.3.6": {
+        "title": "AllToolBox 1.3.6 for Windows x86",
+        "filename": "AllToolBox-1.3.6-windows-x86.zip",
+        "size": "12.3 MB",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "url": "https://example.com/AllToolBox-1.3.6-windows-x86.zip",
+        "notes_short": "支持多种 Android 设备的一键部署工具（Windows x86 客户端）。",
+        "notes_long": "1.3.6 说明：\n- 增加对更多厂商设备的支持\n- 修复了在部分环境中安装失败的 bug\n- 改进了 Root 后的安全检查"
+      }
+    }
+  }
+}
