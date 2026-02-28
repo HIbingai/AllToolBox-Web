@@ -132,7 +132,7 @@ export default function App() {
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 4, flexDirection: { xs: 'column', md: 'row' } }}>
           <Box sx={{ flex: 1 }}>
             <Typography variant="h2" component="h1" sx={{ fontWeight: 800, mb: 2 }}>AllToolBox工具箱</Typography>
-            <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>  --专为安卓设备定制的工具箱，包含一键Root及 Root 后的扩展与管理功能</Typography>
+            <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>{'\u00A0\u00A0\u00A0\u00A0--专为安卓设备定制的Root工具箱，支持多种Android设备'}</Typography>
 
             <Box sx={{ display: 'flex', gap: 2 }}>
               <Button variant="contained" color="primary" size="large" href="#download">立即下载</Button>
