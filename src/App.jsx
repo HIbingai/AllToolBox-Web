@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline, Container, AppBar, Toolbar, Typography, Box, Grid, Paper, IconButton, Dialog, DialogTitle, DialogContent, DialogActions, Button, useMediaQuery } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import SearchIcon from '@mui/icons-material/Search';
 import getTheme from './theme';
 import PlatformSelector from './components/PlatformSelector';
 import DownloadCard from './components/DownloadCard';
@@ -105,11 +106,22 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBar position="sticky" color="default" elevation={2}>
-        <Toolbar>
-          <IconButton edge="start" color="inherit"><MenuIcon /></IconButton>
-          <Typography variant="h6" sx={{ flexGrow: 1 }}>工具箱</Typography>
-          <Button color="inherit" href="#download">下载</Button>
+      <AppBar position="sticky" color="transparent" elevation={0} sx={{ backdropFilter: 'blur(8px) saturate(120%)', WebkitBackdropFilter: 'blur(8px) saturate(120%)' }}>
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 2 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <Typography variant="h6" sx={{ fontWeight: 700, letterSpacing: 0, mr: 1 }}>工具箱</Typography>
+          </Box>
+
+          <Box component="nav" sx={{ display: 'flex', gap: 3, alignItems: 'center', justifyContent: 'center', flexGrow: 1 }}>
+            {['产品','下载','文档','支持','关于'].map((t) => (
+              <Button key={t} color="inherit" sx={{ color: 'inherit', textTransform: 'none', fontWeight: 500 }} href={`#${t}`}>{t}</Button>
+            ))}
+          </Box>
+
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <IconButton color="inherit"><SearchIcon /></IconButton>
+            <Button variant="contained" color="primary" href="#download">下载</Button>
+          </Box>
         </Toolbar>
       </AppBar>
 
