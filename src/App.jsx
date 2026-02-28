@@ -131,8 +131,8 @@ export default function App() {
       <Container maxWidth="lg" sx={{ py: 6 }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 4, flexDirection: { xs: 'column', md: 'row' } }}>
           <Box sx={{ flex: 1 }}>
-            <Typography variant="h2" component="h1" sx={{ fontWeight: 800, mb: 2 }}>AllToolBox — 轻量可靠的系统工具箱</Typography>
-            <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>跨平台、多架构、开箱即用的系统维护工具，注重性能与安全。</Typography>
+            <Typography variant="h2" component="h1" sx={{ fontWeight: 800, mb: 2 }}>AllToolBox — 面向 Android 的系统工具箱</Typography>
+            <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>专为 Android 产品设计，支持已 Root 设备的管理、调试与系统维护，面向开发者与高级用户。</Typography>
 
             <Box sx={{ display: 'flex', gap: 2 }}>
               <Button variant="contained" color="primary" size="large" href="#download">立即下载</Button>
@@ -141,16 +141,16 @@ export default function App() {
 
             <Box sx={{ mt: 4, display: 'flex', gap: 2, flexWrap: 'wrap' }}>
               <Paper elevation={0} sx={{ p: 2, minWidth: 140, display: 'flex', flexDirection: 'column', gap: 1 }}>
-                <Typography variant="h6">小巧</Typography>
-                <Typography variant="body2" color="text.secondary">体积小，启动快</Typography>
+                <Typography variant="h6">面向 Android</Typography>
+                <Typography variant="body2" color="text.secondary">专为 Android 产品设计与性能优化</Typography>
               </Paper>
               <Paper elevation={0} sx={{ p: 2, minWidth: 140, display: 'flex', flexDirection: 'column', gap: 1 }}>
-                <Typography variant="h6">安全</Typography>
-                <Typography variant="body2" color="text.secondary">签名与校验支持</Typography>
+                <Typography variant="h6">支持 Root</Typography>
+                <Typography variant="body2" color="text.secondary">为已 Root 设备提供安全的管理与安装流程</Typography>
               </Paper>
               <Paper elevation={0} sx={{ p: 2, minWidth: 140, display: 'flex', flexDirection: 'column', gap: 1 }}>
-                <Typography variant="h6">跨平台</Typography>
-                <Typography variant="body2" color="text.secondary">支持 Windows、macOS、Linux</Typography>
+                <Typography variant="h6">多架构支持</Typography>
+                <Typography variant="body2" color="text.secondary">支持 ARM 与 x86，兼容主流厂商设备</Typography>
               </Paper>
             </Box>
           </Box>
@@ -166,22 +166,22 @@ export default function App() {
           <Grid item xs={12} md={4}>
             <Paper elevation={1} sx={{ p: 3, textAlign: 'center' }}>
               <SpeedIcon sx={{ fontSize: 40, color: 'primary.main' }} />
-              <Typography variant="h6" sx={{ mt: 1 }}>快速</Typography>
-              <Typography variant="body2" color="text.secondary">高性能构建与运行时优化。</Typography>
+              <Typography variant="h6" sx={{ mt: 1 }}>针对 Android 优化</Typography>
+              <Typography variant="body2" color="text.secondary">为 Android 产品做过性能与包体大小优化。</Typography>
             </Paper>
           </Grid>
           <Grid item xs={12} md={4}>
             <Paper elevation={1} sx={{ p: 3, textAlign: 'center' }}>
               <SecurityIcon sx={{ fontSize: 40, color: 'primary.main' }} />
-              <Typography variant="h6" sx={{ mt: 1 }}>安全</Typography>
-              <Typography variant="body2" color="text.secondary">内置校验与安全更新流程。</Typography>
+              <Typography variant="h6" sx={{ mt: 1 }}>Root 安全流程</Typography>
+              <Typography variant="body2" color="text.secondary">提供针对已 Root 设备的安全安装与回滚机制。</Typography>
             </Paper>
           </Grid>
           <Grid item xs={12} md={4}>
             <Paper elevation={1} sx={{ p: 3, textAlign: 'center' }}>
               <DevicesIcon sx={{ fontSize: 40, color: 'primary.main' }} />
-              <Typography variant="h6" sx={{ mt: 1 }}>兼容</Typography>
-              <Typography variant="body2" color="text.secondary">支持多平台与 ARM 架构。</Typography>
+              <Typography variant="h6" sx={{ mt: 1 }}>设备兼容</Typography>
+              <Typography variant="body2" color="text.secondary">支持主流厂商 ROM 与多种 CPU 架构。</Typography>
             </Paper>
           </Grid>
         </Grid>
