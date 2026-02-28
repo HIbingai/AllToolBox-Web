@@ -34,6 +34,16 @@ jobs:
           echo "Preparing artifact by dereferencing any symlinks"
           mkdir -p artifact
           cp -rL ./dist/. ./artifact/
+      - name: Inspect artifact
+        run: |
+          echo "Artifact size:"
+          du -sh artifact || true
+          echo "Top 20 files by size:"
+          find artifact -type f -printf '%s %p\n' | sort -nr | head -n 20 || true
+          echo "Symlinks (if any):"
+          find artifact -type l -ls || true
+          echo "Files with multiple hard links (if any):"
+          find artifact -type f -links +1 -ls || true
       - name: Upload pages artifact
         uses: actions/upload-artifact@v4
         with:
