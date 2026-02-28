@@ -30,7 +30,7 @@ jobs:
         run: npm run build
 
       - name: Upload pages artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: dist
           path: ./dist
@@ -51,7 +51,7 @@ jobs:
           sleep 20
       - name: Download artifact
         if: ${{ env.PAGES_ENABLED == 'true' }}
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: dist
           path: ./dist
