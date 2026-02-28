@@ -132,7 +132,6 @@ export default function App() {
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 4, flexDirection: { xs: 'column', md: 'row' } }}>
           <Box sx={{ flex: 1 }}>
             <Typography variant="h2" component="h1" sx={{ fontWeight: 800, mb: 2 }}>AllToolBox工具箱</Typography>
-            <Typography variant="h6" color="text.secondary" sx={{ mb: 3 }}>{'\u00A0\u00A0\u00A0\u00A0--专为安卓设备定制的Root工具箱，支持多种Android设备'}</Typography>
 
             <Box sx={{ display: 'flex', gap: 2 }}>
               <Button variant="contained" color="primary" size="large" href="#download">立即下载</Button>
@@ -227,6 +226,9 @@ export default function App() {
 
       <Box component="footer" sx={{ py: 3, textAlign: 'center' }}>
         <Typography variant="caption" color="text.secondary">© 工具箱 团队</Typography>
+        <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 1 }}>
+          AllToolBox 开源地址: <a href="https://github.com/AllToolBox-SC/AllToolBox" target="_blank" rel="noopener noreferrer">https://github.com/AllToolBox-SC/AllToolBox</a>
+        </Typography>
       </Box>
 
       <Dialog open={modalOpen} onClose={() => setModalOpen(false)} fullWidth maxWidth="md">
